@@ -4,19 +4,20 @@ $(document).ready(function(){
 	var counter = 0
 	$(".box").one("click",function(){
 	counter++
-		if(counter % 2 == 0){
+		if(counter == 9){
+			alert("The game is a draw. Play again!")
+		
+		}
+		else if(counter % 2 == 0){
 			$(this).text("X")
 			check_for_winner()
 			check_for_winner()
 		}
 		else {
 			$(this).text("O")
-			check_for_winner()
-			
+			check_for_winner()	
 		}
-
 	})
-	
 function check_for_winner(){
 	if($("#box-1").text() != "" && $("#box-1").text() == $("#box-2").text() && $("#box-1").text() == $("#box-3").text()){
 		$(document).ready(function(){
