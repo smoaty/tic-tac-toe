@@ -9,6 +9,13 @@ $(document).ready(function(){
 		$("#reset").fadeIn()
 		$("table").fadeIn()
 	})
+	$("#btn1").click(function(){
+		play_one_player()
+		$("#btn1").fadeOut()
+		$("#btn2").fadeOut()
+		$("#reset").fadeIn()
+		$("table").fadeIn()
+	})
 	$("#reset").click(function(){
 		location.reload()
 	})

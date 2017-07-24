@@ -5,7 +5,6 @@ table{
 	margin-top:-157px;
 	margin-left:-158px;
 
-
 }
 
 #btn1 {
@@ -53,7 +52,7 @@ table{
 	width:100px;
 	height:100px;
 	background-color:white;
-	border: 1px solid gray;
+	
 	display: inline-block;
 	margin: auto;
 	text-align: center;

@@ -1,6 +1,6 @@
 function play_two_players(){
 $(document).ready(function(){
-	
+
 	var counter = 0
 	$(".box").one("click",function(){
 	counter++
