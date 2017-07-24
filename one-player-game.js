@@ -36,9 +36,10 @@ var newGame = function () {
             compMove();
             boardCheck();
             checkWin();
-        }
-    });
-};
+        	}
+    	});
+	}
+
 
 
 // Starts new game
@@ -49,65 +50,79 @@ $(document).ready(function () {
 // The ai checks to see if there are any combination of two boxes with and X (which is the human) and places and O to block.
 var compMove = function () {
     if (a1 == "" && ((a3 == "X" && a2 == "X") || (c3 == "X" && b2 == "X") || (c1 == "X" && b1 == "X"))) {
-        $('#box-1').text("O");
+        $('#box-1').text("O").hide().fadeIn(2000);
+        $('#box-1').off("click")
         turn = 0;
-    } 
+    	} 
 	else if	(a2 == "" && ((a1 == "X" && a3 == "X") || (c2 == "X" && b2 == "X"))) {
-        $('#box-2').text("O");
-        turn = 0;
+        $('#box-2').text("O").hide().fadeIn(2000)
+       	$('#box-2').off("click")
+       	turn = 0;
         }
     else if (a3 == "" && ((a1 == "X" && a2 == "X") || (c1 == "X" && b2 == "X") || (c3 == "X" && b3 == "X"))) {
-        $('#box-3').text("O");
-        turn = 0;
+        $('#box-3').text("O").hide().fadeIn(2000)
+       	$('#box-3').off("click")
+       	turn = 0;
         }
     else if (c3 == "" && ((c1 == "X" && c2 == "X") || (a1 == "X" && b2 == "X") || (a3 == "X" && b3 == "X"))) {
-	    $('#box-9').text("O");
+	    $('#box-9').text("O").hide().fadeIn(2000)
+        $('#box-9').off("click")
         turn = 0;
         }
     else if (c1 == "" && ((c3 == "X" && c2 == "X") || (a3 == "X" && b2 == "X") || (a1 == "X" && b1 == "X"))) {
-        $('#box-7').text("O");
+        $('#box-7').text("O").hide().fadeIn(2000)
+        $('#box-7').off("click")
         turn = 0;
         }
     else if (c2 == "" && ((c3 == "X" && c1 == "X") || (a2 == "X" && b2 == "X"))) {
-        $('#box-8').text("O");
+        $('#box-8').text("O").hide().fadeIn(2000)
+        $('#box-8').off("click")
         turn = 0;
         }
     else if (b1 == "" && ((b3 == "X" && b2 == "X") || (a1 == "X" && c1 == "X"))) {
-        $('#box-4').text("O");
+        $('#box-4').text("O").hide().fadeIn(2000)
+        $('#box-4').off("click")
         turn = 0;
         }
     else if (b3 == "" && ((a3 == "X" && c3 == "X") || (b2 == "X" && b1 == "X"))) {
-        $('#box-6').text("O");
+        $('#box-6').text("O").hide().fadeIn(2000)
+        $('#box-6').off("click")
         turn = 0;
         }
     else if (b2 == "" && ((a3 == "X" && c1 == "X") || (c3 == "X" && a1 == "X") || (b3 == "X" && b1 == "X") || (c2 == "X" && a2 == "X"))) {
-        $('#box-5').text("O");
+        $('#box-5').text("O").hide().fadeIn(2000)
+        $('#box-5').off("click")
         turn = 0;
         }
     	else{ // if none of the above are in place, this makes the ai make a move somewhere else.
         	if (b2 == "") {
-            	$('#box-5').text("O");
+            	$('#box-5').text("O").hide().fadeIn(2000)
+				$('#box-5').off("click")
                 turn = 0;
                 }
             else if (a1 == "") {
-                $('#box-1').text("O");
+                $('#box-1').text("O").hide().fadeIn(2000)
+				$('#box-1').off("click")
                 turn = 0;
                 }
             else if (c3 == "") {
-                $('#box-9').text("O");
-                turn = 0;
+                $('#box-9').text("O").hide().fadeIn(2000)
+	            $('#box-9').off("click")
+	            turn = 0;
                 } 
             else if (c2 == "") {
-                $('#box-8').text("O");
+                $('#box-8').text("O").hide().fadeIn(2000)
+				$('#box-8').off("click")
                 turn = 0;
                 }
             else if (b1 == "") {
-                $('#box-4').text("O");
+                $('#box-4').text("O").hide().fadeIn(2000)
+				$('#box-4').off("click")
                 turn = 0;
                 }
         }
 }
-                                            
+                       
 // this function is to avoid having to type box-x.html() every single time
 boardCheck = function () {
     a1 = $('#box-1').html();
