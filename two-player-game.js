@@ -1,6 +1,6 @@
 function play_two_players(){
 $(document).ready(function(){
-
+	//this counts each click and changes from x to o for each click. It also checks to see if it is a tie or if there is a winner.
 	var counter = 0
 	$(".box").one("click",function(){
 	counter++
@@ -18,6 +18,7 @@ $(document).ready(function(){
 			check_for_winner()	
 		}
 	})
+	//This function goes through each of the possible win conditions.
 function check_for_winner(){
 	if($("#box-1").text() != "" && $("#box-1").text() == $("#box-2").text() && $("#box-1").text() == $("#box-3").text()){
 		$(document).ready(function(){
