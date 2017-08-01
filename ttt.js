@@ -27,8 +27,8 @@ var tic_tac_toe = (function(){
 			}
 
 		this.place = function(x_coord,y_coord,character){
-			this.values[x_coord][y_coord] = character; //Ken's
-			//TODO: Remove the ken comment when he's not looking
+			this.values[x_coord][y_coord] = character;
+			
 			}
 		}
 
@@ -137,7 +137,7 @@ var tic_tac_toe = (function(){
 				[2,0]
 				]
 			]
-
+		this.winner = false
 		this.getWinner = function(){
 			//Returns the mark of the winner if there is one
 			for (var index = 0; index < this.WINNING_COORDINATES.length; index++){
@@ -145,76 +145,16 @@ var tic_tac_toe = (function(){
 				var winner = this.checkSame(coord_list)
 				//Check to see if winner is not false
 				if (winner != false){
+					this.winner = true
 					return winner
 					}
 				}
 			return null
 			}
-			
-		this.onePlayer = function(){
-			var a1 = [0,0]
-			var a2 = [0,1]
-			var a3 = [0,2]
-			var b1 = [1,0]
-			var b2 = [1,1]
-			var b3 = [1,2]
-			var c1 = [2,0]
-			var c2 = [2,1]
-			var c3 = [2,2]
-				if (a1 == "" && ((a3 == "X" && a2 == "X") || (c3 == "X" && b2 == "X") || (c1 == "X" && b1 == "X"))) {
-					this.place(0,0)
-					} 
-				else if	(a2 == "" && ((a1 == "X" && a3 == "X") || (c2 == "X" && b2 == "X"))) {
-					this.place(0,1)
-					}
-				else if (a3 == "" && ((a1 == "X" && a2 == "X") || (c1 == "X" && b2 == "X") || (c3 == "X" && b3 == "X"))) {
-					this.place(0,2)
-					}
-				else if (c3 == "" && ((c1 == "X" && c2 == "X") || (a1 == "X" && b2 == "X") || (a3 == "X" && b3 == "X"))) {
-					this.place(2,2)
-					}
-				else if (c1 == "" && ((c3 == "X" && c2 == "X") || (a3 == "X" && b2 == "X") || (a1 == "X" && b1 == "X"))) {
-					this.place(2,0)
-					}
-				else if (c2 == "" && ((c3 == "X" && c1 == "X") || (a2 == "X" && b2 == "X"))) {
-					this.place(2,1)
-					}
-				else if (b1 == "" && ((b3 == "X" && b2 == "X") || (a1 == "X" && c1 == "X"))) {
-					this.place(1,0)
-					}
-				else if (b3 == "" && ((a3 == "X" && c3 == "X") || (b2 == "X" && b1 == "X"))) {
-					this.place(1,2)
-					}
-				else if (b2 == "" && ((a3 == "X" && c1 == "X") || (c3 == "X" && a1 == "X") || (b3 == "X" && b1 == "X") || (c2 == "X" && a2 == "X"))) {
-					this.place(1,1)
-					}
-					else{ // if none of the above are in place, this makes the ai make a move somewhere else.
-						if (b2 == "") {
-							this.place(1,1)
-							}
-						else if (a1 == "") {
-							this.place(0,0)
-							}
-						else if (c3 == "") {
-							this.place(2,2)
-							} 
-						else if (c2 == "") {
-							this.place(2,1)
-							}
-						else if (b1 == "") {
-							this.place(1,0)
-							}
-					}
-			}
-		}
-						
-					
-					
-
-
+	}					
 	return module
-	
-	})()
+		
+})()
 
 
 
