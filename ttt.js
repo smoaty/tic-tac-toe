@@ -37,7 +37,10 @@ var tic_tac_toe = (function(){
 		this.board = new module.Board(3)
 		this.turn_count = 0
 		this.player_turn = "X"
-
+		this.convertedArray = ""
+		this.apiBoard = ""
+		this.gameId = ""
+		
 		this.getBoard = function(){
 			var board_instance = this.board
 			var board_values = board_instance.getBoard()
@@ -45,10 +48,60 @@ var tic_tac_toe = (function(){
 			//Alternative to the above:
 			//return this.board.getBoard()
 			}
+		var boardArray = this.getBoard()
+		this.convertArray = function(){
+			boardArray.reduce(function(prev, curr) {
+			return this.convertedArray = prev.concat(curr);
+				});
+			}
 
+		this.saveBoard = function(id){
+			id = this.gameId
+			var obj = {tic_tac_toe_game:{data: {board: convertedArray }}}
+			$.post('http://ce-sample-api.herokuapp.com/tic_tac_toe_games/'+id+'.json', obj, function(res){
+				})
+			}
+		this.convertApiBoard = function (arr, part){
+			var _this = this
+			part = 3
+			arr = _this.apiBoard
+			if(_this.apiBoard.length > 1){ 
+			_this.board.values = []
+			for(var i = 0; i < arr.length; i += part){
+				_this.board.values.push(arr.slice(i, i + part))
+				}
+			}
+		}
+		this.updateTurnCount = function(){
+		for(var i = 0; i < this.apiBoard.length; i++){
+			if(this.apiBoard[i] != ""){
+			this.turn_count++
+				}
+			}
+		}
+		this.loadFromApi = function(id){
+		var _this = this
+		this.gameId = id
+		$.get('http://ce-sample-api.herokuapp.com/tic_tac_toe_games/'+id+'.json',function(res){
+			_this.apiBoard = res.data.board
+			console.log(_this.apiBoard)
+			_this.convertApiBoard()
+			console.log(_this.apiBoard)
+			_this.updateTurnCount()
+			console.log(_this.gameId)
+			})
+			
+		}
+		
+		this.resetGame = function(id){
+		id = this.gameId
+		var obj = {tic_tac_toe_game:{data:{board:[""]}}}
+		$.post('http://ce-sample-api.herokuapp.com/tic_tac_toe_games/'+id+'.json',obj,function(res){
+			})
+		}
+		
 		this.setTurn = function(){
 			//Increase the turn_count
-			this.turn_count ++
 			//Figure out the value for player_turn
 			if (this.turn_count % 2 == 0){
 				this.player_turn = "X"
@@ -56,6 +109,7 @@ var tic_tac_toe = (function(){
 			else{
 				this.player_turn = "O"
 				}
+			this.turn_count++
 			}
 
 		this.place = function(x_coord,y_coord){
