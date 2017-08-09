@@ -32,8 +32,11 @@ table{
 	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3194c6), to(#5bacd6));
 	border-radius: 8px;
 	position: fixed;
-	left: 53.5%;
-	top: 43%;
+	left: 50%;
+	top: 50%;
+	margin-top:-50px;
+	margin-left:-200px;
+
 }
 #reset{
 	color: white;
